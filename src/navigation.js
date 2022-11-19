@@ -19,6 +19,12 @@ const Navigation = () => {
                     Search
                 </Link>
             </li>
+            <li className="nav-item">
+                <Link to="/users"
+                      className={`nav-link ${parts[1] === 'users'?'active': ''}`}>
+                    Users
+                </Link>
+            </li>
         </ul>
     )
 }

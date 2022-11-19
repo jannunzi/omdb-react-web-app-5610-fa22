@@ -10,12 +10,15 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import {Routes, Route} from "react-router";
 import {BrowserRouter} from "react-router-dom";
 import Navigation from "./navigation";
+import Users from "./users";
+import usersReducer from "./users/users-reducer";
 
 const store = configureStore({
     reducer: {
         movies: moviesReducer,
         omdb: omdbReducer,
-        likes: likesReducer
+        likes: likesReducer,
+        users: usersReducer
     }
 })
 
@@ -28,6 +31,7 @@ function App() {
                     <Routes>
                         <Route index element={<Movies/>}/>
                         <Route path="/search" element={<OmdbSearch/>}/>
+                        <Route path="/users" element={<Users/>}/>
                     </Routes>
                 </BrowserRouter>
             </Provider>
