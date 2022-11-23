@@ -12,6 +12,11 @@ import {BrowserRouter} from "react-router-dom";
 import Navigation from "./navigation";
 import Users from "./users";
 import usersReducer from "./users/users-reducer";
+import Login from "./users/login";
+import Register from "./users/register";
+import CurrentUser from "./users/current-user";
+import Profile from "./users/profile";
+import ProtectedRoute from "./users/protected-route";
 
 const store = configureStore({
     reducer: {
@@ -27,12 +32,21 @@ function App() {
         <div className="container mt-4 mb-4">
             <Provider store={store}>
                 <BrowserRouter>
-                    <Navigation/>
-                    <Routes>
-                        <Route index element={<Movies/>}/>
-                        <Route path="/search" element={<OmdbSearch/>}/>
-                        <Route path="/users" element={<Users/>}/>
-                    </Routes>
+                    <CurrentUser>
+                        <Navigation/>
+                        <Routes>
+                            <Route index element={<Movies/>}/>
+                            <Route path="/search" element={<OmdbSearch/>}/>
+                            <Route path="/users" element={<Users/>}/>
+                            <Route path="/login" element={<Login/>}/>
+                            <Route path="/register" element={<Register/>}/>
+                            <Route path="/profile" element={
+                                <ProtectedRoute>
+                                    <Profile/>
+                                </ProtectedRoute>
+                            }/>
+                        </Routes>
+                    </CurrentUser>
                 </BrowserRouter>
             </Provider>
         </div>

@@ -1,7 +1,9 @@
 import {Link} from "react-router-dom";
 import {useLocation} from "react-router";
+import {useSelector} from "react-redux";
 
 const Navigation = () => {
+    const {currentUser} = useSelector((state) => state.users)
     const {pathname} = useLocation()
     const parts = pathname.split('/')
     console.log(parts)
@@ -23,6 +25,24 @@ const Navigation = () => {
                 <Link to="/users"
                       className={`nav-link ${parts[1] === 'users'?'active': ''}`}>
                     Users
+                </Link>
+            </li>
+            <li className={`nav-item ${currentUser ? 'd-none':''}`}>
+                <Link to="/login"
+                      className={`nav-link ${parts[1] === 'login'?'active': ''}`}>
+                    Login
+                </Link>
+            </li>
+            <li className={`nav-item ${currentUser ? 'd-none':''}`}>
+                <Link to="/register"
+                      className={`nav-link ${parts[1] === 'register'?'active': ''}`}>
+                    Register
+                </Link>
+            </li>
+            <li className={`nav-item ${!currentUser ? 'd-none':''}`}>
+                <Link to="/profile"
+                      className={`nav-link ${parts[1] === 'profile'?'active': ''}`}>
+                    Profile
                 </Link>
             </li>
         </ul>
