@@ -12,7 +12,7 @@ const Login = () => {
     const handleLoginBtn = () => {
         try {
             dispatch(loginThunk({username, password}))
-            navigate('/profile')
+            // navigate('/profile')
         } catch (e) {
 
         }
@@ -31,7 +31,9 @@ const Login = () => {
             <input
                 onChange={(e) => setPassword(e.target.value)}
                 className="form-control" placeholder="password" type="password" value={password}/>
-            <button onClick={handleLoginBtn}>Login</button>
+            <button
+                className="btn btn-primary w-100"
+                onClick={handleLoginBtn}>Login</button>
         </>
     )
 }

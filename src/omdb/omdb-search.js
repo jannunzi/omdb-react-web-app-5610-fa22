@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {findMovieBySearchTermThunk} from "./omdb-thunks";
 import {userLikesMovieThunk} from "../likes/likes-thunks";
+import {Link} from "react-router-dom";
 
 const OmdbSearch = () => {
     const [searchTerm, setSearchTerm] = useState('Avatar')
@@ -37,11 +38,17 @@ const OmdbSearch = () => {
                                 }))
                             }} className="float-end bi bi-hand-thumbs-up"></i>
                             <i className="float-end bi bi-hand-thumbs-down me-2"></i>
-                            {movie.Title}
+                            <img src={movie.Poster} height={50}/>
+                            <Link to={`/details/${movie.imdbID}`}>
+                                {movie.Title}
+                            </Link>
                         </li>
                     )
                 }
             </ul>
+            <pre>
+                {JSON.stringify(movies, null, 2)}
+            </pre>
         </>
     )
 }
