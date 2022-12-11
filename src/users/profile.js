@@ -1,6 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {logoutThunk} from "./users-thunk";
 import {useNavigate} from "react-router";
+import Follows from "../follows/follows";
+import Likes from "../likes/likes";
 
 const Profile = () => {
     const navigate = useNavigate()
@@ -22,6 +24,8 @@ const Profile = () => {
                 onClick={handleLogoutBtn}>
                 Logout
             </button>
+            <Follows uid={currentUser._id}/>
+            <Likes uid={currentUser._id} p1="v1" p2="v2"/>
         </>
     )
 }

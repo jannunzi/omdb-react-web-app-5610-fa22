@@ -6,6 +6,8 @@ import {findReviewsByAuthor} from "../reviews/reviews-service";
 import {findReviewsByAuthorThunk} from "../reviews/reviews-thunks";
 import {Link} from "react-router-dom";
 import {findFollowersThunk, findFollowingThunk, followUserThunk} from "../follows/follows-thunks";
+import Follows from "../follows/follows";
+// import Follows from "../follows/follows";
 
 const PublicProfile = () => {
     const {uid} = useParams()
@@ -43,26 +45,7 @@ const PublicProfile = () => {
                     )
                 }
             </ul>
-            <h2>Following</h2>
-            <div className="list-group">
-                {
-                    following && following.map((follow) =>
-                        <Link to={`/profile/${follow.followed._id}`} className="list-group-item">
-                            {follow.followed.username}
-                        </Link>
-                    )
-                }
-            </div>
-            <h2>Followers</h2>
-            <div className="list-group">
-                {
-                    followers && followers.map((follow) =>
-                        <Link to={`/profile/${follow.follower._id}`} className="list-group-item">
-                            {follow.follower.username}
-                        </Link>
-                    )
-                }
-            </div>
+            <Follows uid={uid}/>
         </>
     )
 }

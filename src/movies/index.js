@@ -44,10 +44,10 @@ const Movies = () => {
 
                             <i onClick={() => {
                                 dispatch(userLikesMovieThunk({
-                                    uid: 111, mid: movie._id//imdbID
+                                    mid: movie._id
                                 }))
-                            }} className="float-end bi bi-hand-thumbs-up me-2"></i>
-                            <i className="float-end bi bi-hand-thumbs-down me-2"></i>
+                            }} className={`${currentUser? '' : 'd-none'} float-end bi bi-hand-thumbs-up me-2`}></i>
+                            <i className={`${currentUser? '' : 'd-none'} float-end bi bi-hand-thumbs-down me-2`}></i>
 
 
                             {movie.title}
